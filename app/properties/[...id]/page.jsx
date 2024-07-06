@@ -1,9 +1,7 @@
 "use client";
-import { useRouter } from "next/navigation";
 
 const PropertyPage = () => {
-     const router = useRouter();
-     return <div>PropertyPage</div>;
+     return <div>Property Page</div>;
 };
 
 export default PropertyPage;
