@@ -1,7 +1,12 @@
-import React from "react";
+import Link from "next/link";
 
 const PropertiesPage = () => {
-     return <div className="bg-red-700">PropertiesPage</div>;
+     return (
+          <div>
+               <h1 className="text-3xl"> Properties</h1>
+               <Link href="/">Go Home</Link>
+          </div>
+     );
 };
 
 export default PropertiesPage;
