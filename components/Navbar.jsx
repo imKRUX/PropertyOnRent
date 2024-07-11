@@ -1,3 +1,7 @@
+import Image from "next/image";
+import logo from "@/assets/images/logo-white.png";
+import profileDeafault from "@/assets/images/profile.png";
+
 const Navbar = () => {
      return (
           <nav className="bg-blue-700 border-b border-blue-500">
@@ -39,9 +43,9 @@ const Navbar = () => {
                                    className="flex items-center flex-shrink-0"
                                    href="/index.html"
                               >
-                                   <img
+                                   <Image
                                         className="w-auto h-10"
-                                        src="images/logo-white.png"
+                                        src={logo}
                                         alt="PropertyPulse"
                                    />
 
@@ -132,9 +136,9 @@ const Navbar = () => {
                                              <span className="sr-only">
                                                   Open user menu
                                              </span>
-                                             <img
+                                             <Image
                                                   className="w-8 h-8 rounded-full"
-                                                  src="images/profile.png"
+                                                  src={profileDeafault}
                                                   alt=""
                                              />
                                         </button>
