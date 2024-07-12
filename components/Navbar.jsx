@@ -1,6 +1,7 @@
 import Image from "next/image";
 import logo from "@/assets/images/logo-white.png";
 import profileDeafault from "@/assets/images/profile.png";
+import { FaGoogle } from "react-icons/fa";
 
 const Navbar = () => {
      return (
@@ -82,7 +83,7 @@ const Navbar = () => {
                          <div className="hidden md:block md:ml-6">
                               <div className="flex items-center">
                                    <button className="flex items-center px-3 py-2 text-white bg-gray-700 rounded-md hover:bg-gray-900 hover:text-white">
-                                        <i className="mr-2 text-white fa-brands fa-google"></i>
+                                        <FaGoogle className="mr-2 text-white" />
                                         <span>Login or Register</span>
                                    </button>
                               </div>
