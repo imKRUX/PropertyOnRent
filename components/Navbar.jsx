@@ -1,9 +1,14 @@
+"use client";
+import { useState } from "react";
 import Image from "next/image";
 import logo from "@/assets/images/logo-white.png";
 import profileDeafault from "@/assets/images/profile.png";
 import { FaGoogle } from "react-icons/fa";
 
 const Navbar = () => {
+     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+     const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
+
      return (
           <nav className="bg-blue-700 border-b border-blue-500">
                <div className="px-2 mx-auto max-w-7xl sm:px-6 lg:px-8">
@@ -16,6 +21,9 @@ const Navbar = () => {
                                    className="relative inline-flex items-center justify-center p-2 text-gray-400 rounded-md hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
                                    aria-controls="mobile-menu"
                                    aria-expanded="false"
+                                   onClick={() =>
+                                        setIsMobileMenuOpen((prev) => !prev)
+                                   }
                               >
                                    <span className="absolute -inset-0.5"></span>
                                    <span className="sr-only">
@@ -132,6 +140,11 @@ const Navbar = () => {
                                              id="user-menu-button"
                                              aria-expanded="false"
                                              aria-haspopup="true"
+                                             onClick={() =>
+                                                  setIsProfileMenuOpen(
+                                                       (prev) => !prev
+                                                  )
+                                             }
                                         >
                                              <span className="absolute -inset-1.5"></span>
                                              <span className="sr-only">
@@ -146,74 +159,79 @@ const Navbar = () => {
                                    </div>
 
                                    {/* <!-- Profile dropdown --> */}
-                                   <div
-                                        id="user-menu"
-                                        className="absolute right-0 z-10 hidden w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-                                        role="menu"
-                                        aria-orientation="vertical"
-                                        aria-labelledby="user-menu-button"
-                                        tabIndex="-1"
-                                   >
-                                        <a
-                                             href="/profile.html"
-                                             className="block px-4 py-2 text-sm text-gray-700"
-                                             role="menuitem"
+                                   {isProfileMenuOpen && (
+                                        <div
+                                             id="user-menu"
+                                             className="absolute right-0 z-10 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                                             role="menu"
+                                             aria-orientation="vertical"
+                                             aria-labelledby="user-menu-button"
                                              tabIndex="-1"
-                                             id="user-menu-item-0"
                                         >
-                                             Your Profile
-                                        </a>
-                                        <a
-                                             href="saved-properties.html"
-                                             className="block px-4 py-2 text-sm text-gray-700"
-                                             role="menuitem"
-                                             tabIndex="-1"
-                                             id="user-menu-item-2"
-                                        >
-                                             Saved Properties
-                                        </a>
-                                        <a
-                                             href="#"
-                                             className="block px-4 py-2 text-sm text-gray-700"
-                                             role="menuitem"
-                                             tabIndex="-1"
-                                             id="user-menu-item-2"
-                                        >
-                                             Sign Out
-                                        </a>
-                                   </div>
+                                             <a
+                                                  href="/profile.html"
+                                                  className="block px-4 py-2 text-sm text-gray-700"
+                                                  role="menuitem"
+                                                  tabIndex="-1"
+                                                  id="user-menu-item-0"
+                                             >
+                                                  Your Profile
+                                             </a>
+                                             <a
+                                                  href="saved-properties.html"
+                                                  className="block px-4 py-2 text-sm text-gray-700"
+                                                  role="menuitem"
+                                                  tabIndex="-1"
+                                                  id="user-menu-item-2"
+                                             >
+                                                  Saved Properties
+                                             </a>
+                                             <a
+                                                  href="#"
+                                                  className="block px-4 py-2 text-sm text-gray-700"
+                                                  role="menuitem"
+                                                  tabIndex="-1"
+                                                  id="user-menu-item-2"
+                                             >
+                                                  Sign Out
+                                             </a>
+                                        </div>
+                                   )}
                               </div>
                          </div>
                     </div>
                </div>
 
                {/* <!-- Mobile menu, show/hide based on menu state. --> */}
-               <div className="hidden" id="mobile-menu">
-                    <div className="px-2 pt-2 pb-3 space-y-1">
-                         <a
-                              href="/index.html"
-                              className="block px-3 py-2 text-base font-medium text-white bg-gray-900 rounded-md"
-                         >
-                              Home
-                         </a>
-                         <a
-                              href="/properties.html"
-                              className="block px-3 py-2 text-base font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white"
-                         >
-                              Properties
-                         </a>
-                         <a
-                              href="/add-property.html"
-                              className="block px-3 py-2 text-base font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white"
-                         >
-                              Add Property
-                         </a>
-                         <button className="flex items-center px-3 py-2 my-4 text-white bg-gray-700 rounded-md hover:bg-gray-900 hover:text-white">
-                              <i className="mr-2 fa-brands fa-google"></i>
-                              <span>Login or Register</span>
-                         </button>
+               {isMobileMenuOpen && (
+                    <div id="mobile-menu">
+                         <div className="px-2 pt-2 pb-3 space-y-1">
+                              <a
+                                   href="/index.html"
+                                   className="block px-3 py-2 text-base font-medium text-white bg-gray-900 rounded-md"
+                              >
+                                   Home
+                              </a>
+                              <a
+                                   href="/properties.html"
+                                   className="block px-3 py-2 text-base font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white"
+                              >
+                                   Properties
+                              </a>
+                              <a
+                                   href="/add-property.html"
+                                   className="block px-3 py-2 text-base font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white"
+                              >
+                                   Add Property
+                              </a>
+                              <button className="flex items-center px-3 py-2 my-4 text-white bg-gray-700 rounded-md hover:bg-gray-900 hover:text-white">
+                                   <i className="mr-2 fa-brands fa-google"></i>
+                                   <FaGoogle className="mr-2 text-white" />
+                                   <span>Login or Register</span>
+                              </button>
+                         </div>
                     </div>
-               </div>
+               )}
           </nav>
      );
 };
