@@ -69,7 +69,7 @@ const Navbar = () => {
                               <div className="hidden md:ml-6 md:block">
                                    <div className="flex space-x-2">
                                         <a
-                                             href="/index.html"
+                                             href="/"
                                              className={`${
                                                   pathname === "/"
                                                        ? "bg-black"
@@ -89,7 +89,7 @@ const Navbar = () => {
                                              Properties
                                         </a>
                                         <a
-                                             href="properties/add"
+                                             href="/properties/add"
                                              className={`${
                                                   pathname === "properties/add"
                                                        ? "bg-black"
@@ -222,20 +222,30 @@ const Navbar = () => {
                     <div id="mobile-menu">
                          <div className="px-2 pt-2 pb-3 space-y-1">
                               <a
-                                   href="/index.html"
-                                   className="block px-3 py-2 text-base font-medium text-white bg-gray-900 rounded-md"
+                                   href="/"
+                                   className={`${
+                                        pathname === "/" ? "bg-black" : ""
+                                   } "block px-3 py-2 text-base font-medium text-white rounded-md"`}
                               >
                                    Home
                               </a>
                               <a
-                                   href="/properties.html"
-                                   className="block px-3 py-2 text-base font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white"
+                                   href="/properties"
+                                   className={`${
+                                        pathname === "/properties"
+                                             ? "bg-black"
+                                             : ""
+                                   } "block px-3 py-2 text-base font-medium text-white rounded-md"`}
                               >
                                    Properties
                               </a>
                               <a
-                                   href="/add-property.html"
-                                   className="block px-3 py-2 text-base font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white"
+                                   href="/properties/add"
+                                   className={`${
+                                        pathname === "/properties/add"
+                                             ? "bg-black"
+                                             : ""
+                                   } "block px-3 py-2 text-base font-medium text-white rounded-md"`}
                               >
                                    Add Property
                               </a>
