@@ -4,10 +4,13 @@ import Image from "next/image";
 import logo from "@/assets/images/logo-white.png";
 import profileDeafault from "@/assets/images/profile.png";
 import { FaGoogle } from "react-icons/fa";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
      const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
      const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
+
+     const pathname = usePathname();
 
      return (
           <nav className="bg-blue-700 border-b border-blue-500">
@@ -67,19 +70,31 @@ const Navbar = () => {
                                    <div className="flex space-x-2">
                                         <a
                                              href="/index.html"
-                                             className="px-3 py-2 text-white rounded-md hover:bg-gray-900 hover:text-white"
+                                             className={`${
+                                                  pathname === "/"
+                                                       ? "bg-black"
+                                                       : ""
+                                             } px-3 py-2 text-white rounded-md hover:bg-gray-900 hover:text-white`}
                                         >
                                              Home
                                         </a>
                                         <a
                                              href="/properties.html"
-                                             className="px-3 py-2 text-white rounded-md hover:bg-gray-900 hover:text-white"
+                                             className={`${
+                                                  pathname === "/properties"
+                                                       ? "bg-black"
+                                                       : ""
+                                             } px-3 py-2 text-white rounded-md hover:bg-gray-900 hover:text-white`}
                                         >
                                              Properties
                                         </a>
                                         <a
                                              href="/add-property.html"
-                                             className="px-3 py-2 text-white rounded-md hover:bg-gray-900 hover:text-white"
+                                             className={`${
+                                                  pathname === "/properties/add"
+                                                       ? "bg-black"
+                                                       : ""
+                                             } px-3 py-2 text-white rounded-md hover:bg-gray-900 hover:text-white`}
                                         >
                                              Add Property
                                         </a>
