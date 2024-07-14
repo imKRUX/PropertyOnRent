@@ -5,10 +5,12 @@ import logo from "@/assets/images/logo-white.png";
 import profileDeafault from "@/assets/images/profile.png";
 import { FaGoogle } from "react-icons/fa";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 const Navbar = () => {
      const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
      const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
+     const [isLoggedIn, setIsLoggedIn] = useState(true);
 
      const pathname = usePathname();
 
@@ -68,7 +70,7 @@ const Navbar = () => {
                               {/* <!-- Desktop Menu Hidden below md screens --> */}
                               <div className="hidden md:ml-6 md:block">
                                    <div className="flex space-x-2">
-                                        <a
+                                        <Link
                                              href="/"
                                              className={`${
                                                   pathname === "/"
@@ -77,8 +79,8 @@ const Navbar = () => {
                                              } px-3 py-2 text-white rounded-md hover:bg-gray-900 hover:text-white`}
                                         >
                                              Home
-                                        </a>
-                                        <a
+                                        </Link>
+                                        <Link
                                              href="/properties"
                                              className={`${
                                                   pathname === "/properties"
@@ -87,17 +89,20 @@ const Navbar = () => {
                                              } px-3 py-2 text-white rounded-md hover:bg-gray-900 hover:text-white`}
                                         >
                                              Properties
-                                        </a>
-                                        <a
-                                             href="/properties/add"
-                                             className={`${
-                                                  pathname === "properties/add"
-                                                       ? "bg-black"
-                                                       : ""
-                                             } px-3 py-2 text-white rounded-md hover:bg-gray-900 hover:text-white`}
-                                        >
-                                             Add Property
-                                        </a>
+                                        </Link>
+                                        {isLoggedIn && (
+                                             <Link
+                                                  href="/properties/add"
+                                                  className={`${
+                                                       pathname ===
+                                                       "/properties/add"
+                                                            ? "bg-black"
+                                                            : ""
+                                                  } px-3 py-2 text-white rounded-md hover:bg-gray-900 hover:text-white`}
+                                             >
+                                                  Add Property
+                                             </Link>
+                                        )}
                                    </div>
                               </div>
                          </div>
@@ -221,15 +226,15 @@ const Navbar = () => {
                {isMobileMenuOpen && (
                     <div id="mobile-menu">
                          <div className="px-2 pt-2 pb-3 space-y-1">
-                              <a
+                              <Link
                                    href="/"
                                    className={`${
                                         pathname === "/" ? "bg-black" : ""
                                    } "block px-3 py-2 text-base font-medium text-white rounded-md"`}
                               >
                                    Home
-                              </a>
-                              <a
+                              </Link>
+                              <Link
                                    href="/properties"
                                    className={`${
                                         pathname === "/properties"
@@ -238,17 +243,19 @@ const Navbar = () => {
                                    } "block px-3 py-2 text-base font-medium text-white rounded-md"`}
                               >
                                    Properties
-                              </a>
-                              <a
-                                   href="/properties/add"
-                                   className={`${
-                                        pathname === "/properties/add"
-                                             ? "bg-black"
-                                             : ""
-                                   } "block px-3 py-2 text-base font-medium text-white rounded-md"`}
-                              >
-                                   Add Property
-                              </a>
+                              </Link>
+                              {isLoggedIn && (
+                                   <Link
+                                        href="/properties/add"
+                                        className={`${
+                                             pathname === "/properties/add"
+                                                  ? "bg-black"
+                                                  : ""
+                                        } px-3 py-2 text-white rounded-md hover:bg-gray-900 hover:text-white`}
+                                   >
+                                        Add Property
+                                   </Link>
+                              )}
                               <button className="flex items-center px-3 py-2 my-4 text-white bg-gray-700 rounded-md hover:bg-gray-900 hover:text-white">
                                    <i className="mr-2 fa-brands fa-google"></i>
                                    <FaGoogle className="mr-2 text-white" />
