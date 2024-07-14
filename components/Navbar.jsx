@@ -67,7 +67,7 @@ const Navbar = () => {
                                    <div className="flex space-x-2">
                                         <a
                                              href="/index.html"
-                                             className="px-3 py-2 text-white bg-black rounded-md hover:bg-gray-900 hover:text-white"
+                                             className="px-3 py-2 text-white rounded-md hover:bg-gray-900 hover:text-white"
                                         >
                                              Home
                                         </a>
