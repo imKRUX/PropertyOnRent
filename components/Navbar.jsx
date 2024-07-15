@@ -53,9 +53,9 @@ const Navbar = () => {
 
                          <div className="flex items-center justify-center flex-1 md:items-stretch md:justify-start">
                               {/* <!-- Logo --> */}
-                              <a
+                              <Link
+                                   href="/"
                                    className="flex items-center flex-shrink-0"
-                                   href="/index.html"
                               >
                                    <Image
                                         className="w-auto h-10"
@@ -66,7 +66,7 @@ const Navbar = () => {
                                    <span className="hidden ml-2 text-2xl font-bold text-white md:block">
                                         PropertyPulse
                                    </span>
-                              </a>
+                              </Link>
                               {/* <!-- Desktop Menu Hidden below md screens --> */}
                               <div className="hidden md:ml-6 md:block">
                                    <div className="flex space-x-2">
@@ -108,117 +108,121 @@ const Navbar = () => {
                          </div>
 
                          {/* <!-- Right Side Menu (Logged Out) --> */}
-                         <div className="hidden md:block md:ml-6">
-                              <div className="flex items-center">
-                                   <button className="flex items-center px-3 py-2 text-white bg-gray-700 rounded-md hover:bg-gray-900 hover:text-white">
-                                        <FaGoogle className="mr-2 text-white" />
-                                        <span>Login or Register</span>
-                                   </button>
+                         {!isLoggedIn && (
+                              <div className="hidden md:block md:ml-6">
+                                   <div className="flex items-center">
+                                        <button className="flex items-center px-3 py-2 text-white bg-gray-700 rounded-md hover:bg-gray-900 hover:text-white">
+                                             <FaGoogle className="mr-2 text-white" />
+                                             <span>Login or Register</span>
+                                        </button>
+                                   </div>
                               </div>
-                         </div>
+                         )}
 
                          {/* <!-- Right Side Menu (Logged In) --> */}
-                         <div className="absolute inset-y-0 right-0 flex items-center pr-2 md:static md:inset-auto md:ml-6 md:pr-0">
-                              <a
-                                   href="messages.html"
-                                   className="relative group"
-                              >
-                                   <button
-                                        type="button"
-                                        className="relative p-1 text-gray-400 bg-gray-800 rounded-full hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                         {isLoggedIn && (
+                              <div className="absolute inset-y-0 right-0 flex items-center pr-2 md:static md:inset-auto md:ml-6 md:pr-0">
+                                   <a
+                                        href="messages.html"
+                                        className="relative group"
                                    >
-                                        <span className="absolute -inset-1.5"></span>
-                                        <span className="sr-only">
-                                             View notifications
-                                        </span>
-                                        <svg
-                                             className="w-6 h-6"
-                                             fill="none"
-                                             viewBox="0 0 24 24"
-                                             strokeWidth="1.5"
-                                             stroke="currentColor"
-                                             aria-hidden="true"
-                                        >
-                                             <path
-                                                  strokeLinecap="round"
-                                                  strokeLinejoin="round"
-                                                  d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"
-                                             />
-                                        </svg>
-                                   </button>
-                                   <span className="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white transform translate-x-1/2 -translate-y-1/2 bg-red-600 rounded-full">
-                                        2
-                                        {/* <!-- Replace with the actual number of notifications --> */}
-                                   </span>
-                              </a>
-                              {/* <!-- Profile dropdown button --> */}
-                              <div className="relative ml-3">
-                                   <div>
                                         <button
                                              type="button"
-                                             className="relative flex text-sm bg-gray-800 rounded-full focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                                             id="user-menu-button"
-                                             aria-expanded="false"
-                                             aria-haspopup="true"
-                                             onClick={() =>
-                                                  setIsProfileMenuOpen(
-                                                       (prev) => !prev
-                                                  )
-                                             }
+                                             className="relative p-1 text-gray-400 bg-gray-800 rounded-full hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                                         >
                                              <span className="absolute -inset-1.5"></span>
                                              <span className="sr-only">
-                                                  Open user menu
+                                                  View notifications
                                              </span>
-                                             <Image
-                                                  className="w-8 h-8 rounded-full"
-                                                  src={profileDeafault}
-                                                  alt=""
-                                             />
+                                             <svg
+                                                  className="w-6 h-6"
+                                                  fill="none"
+                                                  viewBox="0 0 24 24"
+                                                  strokeWidth="1.5"
+                                                  stroke="currentColor"
+                                                  aria-hidden="true"
+                                             >
+                                                  <path
+                                                       strokeLinecap="round"
+                                                       strokeLinejoin="round"
+                                                       d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"
+                                                  />
+                                             </svg>
                                         </button>
-                                   </div>
-
-                                   {/* <!-- Profile dropdown --> */}
-                                   {isProfileMenuOpen && (
-                                        <div
-                                             id="user-menu"
-                                             className="absolute right-0 z-10 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-                                             role="menu"
-                                             aria-orientation="vertical"
-                                             aria-labelledby="user-menu-button"
-                                             tabIndex="-1"
-                                        >
-                                             <a
-                                                  href="/profile.html"
-                                                  className="block px-4 py-2 text-sm text-gray-700"
-                                                  role="menuitem"
-                                                  tabIndex="-1"
-                                                  id="user-menu-item-0"
+                                        <span className="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white transform translate-x-1/2 -translate-y-1/2 bg-red-600 rounded-full">
+                                             2
+                                             {/* <!-- Replace with the actual number of notifications --> */}
+                                        </span>
+                                   </a>
+                                   {/* <!-- Profile dropdown button --> */}
+                                   <div className="relative ml-3">
+                                        <div>
+                                             <button
+                                                  type="button"
+                                                  className="relative flex text-sm bg-gray-800 rounded-full focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                                                  id="user-menu-button"
+                                                  aria-expanded="false"
+                                                  aria-haspopup="true"
+                                                  onClick={() =>
+                                                       setIsProfileMenuOpen(
+                                                            (prev) => !prev
+                                                       )
+                                                  }
                                              >
-                                                  Your Profile
-                                             </a>
-                                             <a
-                                                  href="saved-properties.html"
-                                                  className="block px-4 py-2 text-sm text-gray-700"
-                                                  role="menuitem"
-                                                  tabIndex="-1"
-                                                  id="user-menu-item-2"
-                                             >
-                                                  Saved Properties
-                                             </a>
-                                             <a
-                                                  href="#"
-                                                  className="block px-4 py-2 text-sm text-gray-700"
-                                                  role="menuitem"
-                                                  tabIndex="-1"
-                                                  id="user-menu-item-2"
-                                             >
-                                                  Sign Out
-                                             </a>
+                                                  <span className="absolute -inset-1.5"></span>
+                                                  <span className="sr-only">
+                                                       Open user menu
+                                                  </span>
+                                                  <Image
+                                                       className="w-8 h-8 rounded-full"
+                                                       src={profileDeafault}
+                                                       alt=""
+                                                  />
+                                             </button>
                                         </div>
-                                   )}
+
+                                        {/* <!-- Profile dropdown --> */}
+                                        {isProfileMenuOpen && (
+                                             <div
+                                                  id="user-menu"
+                                                  className="absolute right-0 z-10 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                                                  role="menu"
+                                                  aria-orientation="vertical"
+                                                  aria-labelledby="user-menu-button"
+                                                  tabIndex="-1"
+                                             >
+                                                  <a
+                                                       href="/profile.html"
+                                                       className="block px-4 py-2 text-sm text-gray-700"
+                                                       role="menuitem"
+                                                       tabIndex="-1"
+                                                       id="user-menu-item-0"
+                                                  >
+                                                       Your Profile
+                                                  </a>
+                                                  <a
+                                                       href="saved-properties.html"
+                                                       className="block px-4 py-2 text-sm text-gray-700"
+                                                       role="menuitem"
+                                                       tabIndex="-1"
+                                                       id="user-menu-item-2"
+                                                  >
+                                                       Saved Properties
+                                                  </a>
+                                                  <a
+                                                       href="#"
+                                                       className="block px-4 py-2 text-sm text-gray-700"
+                                                       role="menuitem"
+                                                       tabIndex="-1"
+                                                       id="user-menu-item-2"
+                                                  >
+                                                       Sign Out
+                                                  </a>
+                                             </div>
+                                        )}
+                                   </div>
                               </div>
-                         </div>
+                         )}
                     </div>
                </div>
 
@@ -256,11 +260,13 @@ const Navbar = () => {
                                         Add Property
                                    </Link>
                               )}
-                              <button className="flex items-center px-3 py-2 my-4 text-white bg-gray-700 rounded-md hover:bg-gray-900 hover:text-white">
-                                   <i className="mr-2 fa-brands fa-google"></i>
-                                   <FaGoogle className="mr-2 text-white" />
-                                   <span>Login or Register</span>
-                              </button>
+                              {!isLoggedIn && (
+                                   <button className="flex items-center px-3 py-2 my-4 text-white bg-gray-700 rounded-md hover:bg-gray-900 hover:text-white">
+                                        <i className="mr-2 fa-brands fa-google"></i>
+                                        <FaGoogle className="mr-2 text-white" />
+                                        <span>Login or Register</span>
+                                   </button>
+                              )}
                          </div>
                     </div>
                )}
