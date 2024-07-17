@@ -1,0 +1,24 @@
+import React, { Children } from "react";
+
+const InfoBox = ({
+     heading,
+     backgroundColor = "bg-gary-100",
+     textColor = "text-gary-800",
+     buttonInfo,
+     children,
+}) => {
+     return (
+          <div className={` ${backgroundColor} p-6 rounded-lg shadow-md`}>
+               <h2 className={`${textColor}text-2xl font-bold`}>{heading}</h2>
+               <p className={`${textColor}}mt-2 mb-4`}>{children}</p>
+               <a
+                    href={buttonInfo.link}
+                    className={`inline-block ${buttonInfo.backgroundColor} px-4 py-2 text-white bg-black rounded-lg hover:opacity-80`}
+               >
+                    {buttonInfo.text}
+               </a>
+          </div>
+     );
+};
+
+export default InfoBox;
