@@ -18,7 +18,7 @@ const PropertyCard = ({ property }) => {
                          <h3 class="text-xl font-bold">{property.name}</h3>
                     </div>
                     <h3 class="absolute top-[10px] right-[10px] bg-white px-4 py-2 rounded-lg text-blue-500 font-bold text-right md:text-center lg:text-right">
-                         $4,200/mo
+                         {property.rates.monthly}/mo
                     </h3>
 
                     <div class="flex justify-center gap-4 text-gray-500 mb-4">
