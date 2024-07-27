@@ -1,30 +1,31 @@
-import React from "react";
+import { FaExclamationTriangle } from "react-icons/fa";
+import Link from "next/link";
 
 const NotFoundPage = () => {
      return (
-          <section class="bg-blue-50 min-h-screen flex-grow">
-               <div class="container m-auto max-w-2xl py-24">
-                    <div class="bg-white px-6 py-24 mb-4 shadow-md rounded-md border m-4 md:m-0">
-                         <div class="flex justify-center">
-                              <i class="fas fa-exclamation-triangle fa-5x text-8xl text-yellow-400"></i>
+          <section className="flex-grow min-h-screen bg-blue-50">
+               <div className="container max-w-2xl py-24 m-auto">
+                    <div className="px-6 py-24 m-4 mb-4 bg-white border rounded-md shadow-md md:m-0">
+                         <div className="flex justify-center">
+                              <FaExclamationTriangle className="text-yellow-400 fas fa-exclamation-triangle fa-5x text-8xl"></FaExclamationTriangle>
                          </div>
-                         <div class="text-center">
-                              <h1 class="text-3xl font-bold mt-4 mb-2">
+                         <div className="text-center">
+                              <h1 className="mt-4 mb-2 text-3xl font-bold">
                                    Page Not Found
                               </h1>
-                              <p class="text-gray-500 text-xl mb-10">
+                              <p className="mb-10 text-xl text-gray-500">
                                    The page you are looking for does not exist.
                               </p>
-                              <a
-                                   href="/index.html"
-                                   class="bg-blue-700 hover:bg-blue-800 text-white font-bold py-4 px-6 rounded"
+                              <Link
+                                   href="/"
+                                   className="px-6 py-4 font-bold text-white bg-blue-700 rounded hover:bg-blue-800"
                               >
                                    Go Home
-                              </a>
+                              </Link>
                          </div>
                     </div>
                </div>
-               <div class="flex-grow"></div>
+               <div className="flex-grow"></div>
           </section>
      );
 };
