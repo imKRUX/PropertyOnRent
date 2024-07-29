@@ -3,6 +3,8 @@ import Image from "next/image";
 import logo from "@/assets/images/logo.png";
 
 const Footer = () => {
+     const currentYear = new Date().getFullYear();
+
      return (
           <footer className="py-4 mt-24 bg-gray-200">
                <div className="container flex flex-col items-center justify-between px-4 mx-auto md:flex-row">
@@ -12,7 +14,8 @@ const Footer = () => {
 
                     <div>
                          <p className="mt-2 text-sm text-gray-500 md:mt-0">
-                              &copy; {2024} PropertyPulse. All rights reserved.
+                              &copy; {currentYear} PropertyPulse. All rights
+                              reserved.
                          </p>
                     </div>
                </div>
